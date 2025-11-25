@@ -5,7 +5,6 @@
 בחר מטרה לנטרל
 
 Itch.io : https://daniel-work-gh.itch.io/target-strike-v0
-
 ## מהות המשחק
 
 משחק רב משתתפים (2 שחקנים) בו השחקן מנטל איום.
@@ -16,7 +15,12 @@ Itch.io : https://daniel-work-gh.itch.io/target-strike-v0
 
 המשחק מיועד למחשב.
 
+רעיון:
+
 <img width="1427" height="682" alt="image" src="https://github.com/user-attachments/assets/a3e2f545-ce1a-4ca8-b8d6-e90da19c8ad8" />
+
+ביצוע נוכחי:
+<img width="2250" height="647" alt="image" src="https://github.com/user-attachments/assets/76bae933-bc60-4e51-a068-98d08de51bf2" />
 
 מצד ימין אלו הרמזים, מצד שמאל אלו הבניינים.
 
