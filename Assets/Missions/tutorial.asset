@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572cc35a2d33dff409ba91dedcff5c11, type: 3}
+  m_Name: tutorial
+  m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
+  missionName: 
+  briefingText: 
+  buildingsX: 5
+  buildingsZ: 5
+  spacing: 25
+  sizeXRange: {x: 15, y: 15}
+  sizeZRange: {x: 15, y: 15}
+  heightRange: {x: 15, y: 15}
+  seed: 12345
+  target:
+    x: 0
+    z: 0
+    overrideSize: 1
+    widthX: 15
+    depthZ: 15
+    height: 20
+  hints:
+  - text: They are about to fire from the tallest building.
+  msgs:
+  - text: Welcome, soldier. This is a training simulation. Your job is to locate
+      and neutralize a target building based only on descriptions (Press enter to
+      continue)
+  - text: You are not guessing. You are matching what you see in the city to what
+      you hear from your commander
+  - text: 'Look around with the drone camera and study the buildings: their height,
+      width, shape and position in the city'
+  - text: The commander will describe the target using features like heigjt and possition,
+      it will be shown in the bottom left.
+  - text: "Use the compass bar at the top to understand which direction you\u2019re
+      looking (N, E, S, W). This helps you talk about buildings."
+  - text: "Use the description to eliminate wrong buildings. If a building doesn\u2019t
+      match the height, shape or location \u2013 ignore it."
+  - text: "When you\u2019re ready, follow the commander\u2019s description and try
+      to find the training target building."
