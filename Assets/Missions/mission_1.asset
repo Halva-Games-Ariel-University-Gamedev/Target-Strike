@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572cc35a2d33dff409ba91dedcff5c11, type: 3}
+  m_Name: mission_1
+  m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
+  missionName: 
+  briefingText: 
+  buildingsX: 8
+  buildingsZ: 8
+  spacing: 25
+  sizeXRange: {x: 15, y: 20}
+  sizeZRange: {x: 15, y: 20}
+  heightRange: {x: 15, y: 20}
+  seed: 12346
+  target:
+    x: 3
+    z: 4
+    overrideSize: 1
+    widthX: 15
+    depthZ: 15
+    height: 10
+  hints:
+  - text: They are about to fire from the smallest building.
+  msgs:
+  - text: 'Well done on your training! '
+  - text: Sadly we dont have time to waste, were about to be under fire soon.
+  - text: Use the available intel to destory the target.
