@@ -2,26 +2,13 @@
 
 # Target-Strike
 
-בחר מטרה לנטרל
+Itch.io : https://daniel-work-gh.itch.io/target-strike-v1
 
-Itch.io : https://daniel-work-gh.itch.io/target-strike-v0
-## מהות המשחק
+## Play test questions
 
-משחק רב משתתפים (2 שחקנים) בו השחקן מנטל איום.
-
-השחקן מקבל הוראות משחקן נוסף על מראה של בניין המכיל חומרי נפץ ונשקים, הוא צריך להחליט בין 10 בניינים איזה מהם להרוס.
-
-ככל שהוא מדויק יותר עם הניחוש שלו הוא מקבל יותר נקודות.
-
-המשחק מיועד למחשב.
-
-רעיון:
-
-<img width="1427" height="682" alt="image" src="https://github.com/user-attachments/assets/a3e2f545-ce1a-4ca8-b8d6-e90da19c8ad8" />
-
-ביצוע נוכחי:
-<img width="2250" height="647" alt="image" src="https://github.com/user-attachments/assets/76bae933-bc60-4e51-a068-98d08de51bf2" />
-
-מצד ימין אלו הרמזים, מצד שמאל אלו הבניינים.
-
----
+1. Do the drone black & white and static filters add to the game or should they be removed ?
+2. Are the maps too big / too small / just right for the game progression ?
+3. Does the drone sway and tilt when moving cause disorientation / annoyance ?
+4. Should the drone be able to fly up / down or is the constant height better ? 
+5. Are the curremt puzzles too hard / easy ?
+6. Does the game explain the control in a good way ?
