@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: tutorial
   m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
   missionName: 
-  briefingText: 
   buildingsX: 5
   buildingsZ: 5
   spacing: 25
   sizeXRange: {x: 15, y: 15}
   sizeZRange: {x: 15, y: 15}
   heightRange: {x: 15, y: 15}
+  floorHeight: 5
+  floorWidth: 5
   seed: 12345
   target:
     x: 0
@@ -30,6 +31,8 @@ MonoBehaviour:
     height: 20
   hints:
   - text: They are about to fire from the tallest building.
+  showPreface: 1
+  prefaceTitle: 
   msgs:
   - text: Welcome, soldier. This is a training simulation. Your job is to locate
       and neutralize a target building based only on descriptions (Press enter to
@@ -44,5 +47,7 @@ MonoBehaviour:
       looking (N, E, S, W). This helps you talk about buildings."
   - text: "Use the description to eliminate wrong buildings. If a building doesn\u2019t
       match the height, shape or location \u2013 ignore it."
+  - text: Use WASD to control the drone.
   - text: "When you\u2019re ready, follow the commander\u2019s description and try
       to find the training target building."
+  prefaceImage: {fileID: 2800000, guid: 637a555e357374445b2f251db7abbc00, type: 3}

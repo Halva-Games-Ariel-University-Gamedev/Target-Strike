@@ -241,3 +241,10 @@ MonoBehaviour:
   gridX: 0
   gridZ: 0
   outlineMesh: {fileID: 6397912964076240430}
+  facadeMaterial: {fileID: 2100000, guid: d8a05f1a31d8e22419a018f0659c889f, type: 2}
+  atlasCols: 4
+  atlasRows: 4
+  atlasIndexTopLeft: 1
+  windowTiles: 0000000001000000020000000300000004000000050000000600000007000000
+  doorTiles: 0c0000000d0000000e0000000f000000
+  floorHeight: 1

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: mission_2
   m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
   missionName: 
-  briefingText: 
   buildingsX: 12
   buildingsZ: 12
   spacing: 25
   sizeXRange: {x: 15, y: 20}
   sizeZRange: {x: 15, y: 20}
   heightRange: {x: 15, y: 20}
+  floorHeight: 5
+  floorWidth: 5
   seed: 1000
   target:
     x: 11
@@ -31,5 +32,13 @@ MonoBehaviour:
   hints:
   - text: 1. The building is located on the most northen side.
   - text: 2. The building is located on the most eastern side.
+  showPreface: 1
+  prefaceTitle: 
   msgs:
-  - text: This is your last mission, good luck!
+  - text: "New sector, denser layout, less time. The enemy is adapting\u2014decoys
+      are expected, and the target will be harder to isolate."
+  - text: "Stay disciplined: match the commander\u2019s description exactly (height,
+      width, shape, position). Identify the real target, ignore lookalikes, and confirm
+      before you authorize."
+  - text: Good luck.
+  prefaceImage: {fileID: 2800000, guid: 01e9468fe4e8c7b4693583229ec008fc, type: 3}

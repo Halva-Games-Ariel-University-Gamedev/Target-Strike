@@ -76,21 +76,35 @@ public class CityGenerator : MonoBehaviour
                     ? mission.target.height
                     : Random.Range(heightRange.x, heightRange.y);
 
+                float fw = Mathf.Max(0.01f, mission.floorWidth);
+                float fh = Mathf.Max(0.01f, mission.floorHeight);
+
+                // snap width/depth to multiples of fw
+                int segX = Mathf.Max(1, Mathf.RoundToInt(sizeX / fw));
+                int segZ = Mathf.Max(1, Mathf.RoundToInt(sizeZ / fw));
+                sizeX = segX * fw;
+                sizeZ = segZ * fw;
+
+                // snap height to multiples of fh
+                int floors = Mathf.Max(1, Mathf.RoundToInt(height / fh));
+                height = floors * fh;
+
                 float posX = offsetX + gx * spacing;
                 float posZ = offsetZ + gz * spacing;
-                Vector3 pos = new Vector3(posX, height * 0.5f, posZ);
 
+                Vector3 pos = new Vector3(posX, 0f, posZ);
                 var building = Instantiate(buildingPrefab, pos, Quaternion.identity, transform);
-                building.transform.localScale = new Vector3(sizeX, height, sizeZ);
 
                 var info = building.GetComponent<BuildingInfo>();
                 if (!info) info = building.AddComponent<BuildingInfo>();
 
-                // id from (x,z)
                 info.gridX = gx;
                 info.gridZ = gz;
                 info.id = gz * buildingsX + gx;
                 info.isTarget = isTarget;
+
+                int buildingSeed = seed ^ (info.id * 73856093) ^ (gx * 19349663) ^ (gz * 83492791);
+                info.Configure(sizeX, height, sizeZ, buildingSeed, fw, fh);
             }
         }
 

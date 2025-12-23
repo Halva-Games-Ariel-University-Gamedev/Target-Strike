@@ -46,7 +46,14 @@ public class MissionsMenu : MonoBehaviour
         CurrentIndex = index;
         Debug.Log(CurrentIndex);
 
-        SceneManager.LoadScene("AttackerSchene");
+        if (CurrentMission.showPreface)
+        {
+            SceneManager.LoadScene("Preface");
+        }
+        else
+        {
+            SceneManager.LoadScene("AttackerSchene");
+        }
     }
 
     public void Reset()

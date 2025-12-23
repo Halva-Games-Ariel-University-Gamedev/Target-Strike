@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572cc35a2d33dff409ba91dedcff5c11, type: 3}
+  m_Name: Mission_3
+  m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
+  missionName: 
+  buildingsX: 20
+  buildingsZ: 20
+  spacing: 15
+  sizeXRange: {x: 5, y: 15}
+  sizeZRange: {x: 5, y: 15}
+  heightRange: {x: 15, y: 40}
+  floorHeight: 5
+  floorWidth: 5
+  seed: 20000
+  target:
+    x: 6
+    z: 1
+    overrideSize: 0
+    widthX: 1
+    depthZ: 1
+    height: 1
+  hints:
+  - text: 1. The building is located on the most southern side.
+  - text: 2. The building has 8 stories.
+  - text: 3. It has an helicopter landing zone on top.
+  - text: 4. It has 5 windows on the northen side of the building.
+  showPreface: 1
+  prefaceTitle: 
+  msgs:
+  - text: "Good work out there, soldier. You stayed disciplined, confirmed your target,
+      and didn\u2019t bite on decoys. "
+  - text: "Now you\u2019re moving to the final mission\u2014identifiers will be tighter,
+      lookalikes will be deliberate, and you\u2019ll get less margin for error. Same
+      rule as always: you\u2019re not guessing. Match the description exactly, confirm,
+      then act."
+  - text: Good luck.
+  prefaceImage: {fileID: 2800000, guid: 01e9468fe4e8c7b4693583229ec008fc, type: 3}

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: mission_1
   m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
   missionName: 
-  briefingText: 
   buildingsX: 8
   buildingsZ: 8
   spacing: 25
   sizeXRange: {x: 15, y: 20}
   sizeZRange: {x: 15, y: 20}
   heightRange: {x: 15, y: 20}
+  floorHeight: 5
+  floorWidth: 5
   seed: 12346
   target:
     x: 3
@@ -30,7 +31,16 @@ MonoBehaviour:
     height: 10
   hints:
   - text: They are about to fire from the smallest building.
+  showPreface: 1
+  prefaceTitle: 
   msgs:
-  - text: 'Well done on your training! '
-  - text: Sadly we dont have time to waste, were about to be under fire soon.
-  - text: Use the available intel to destory the target.
+  - text: "Tutorial complete. You\u2019re being reassigned from the simulator to
+      your first live-fire mission. From here on, your actions have consequences."
+  - text: "Intel will be incomplete. You are not guessing. Confirm the target by
+      height, width, shape, and position\u2014if anything doesn\u2019t match, discard
+      it. Collateral damage is mission failure."
+  - text: 'Good luck.
+
+
+'
+  prefaceImage: {fileID: 2800000, guid: 2870248dd6be9ba44966ed9583bf9856, type: 3}
