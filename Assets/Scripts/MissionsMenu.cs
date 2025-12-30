@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,7 +30,7 @@ public class MissionsMenu : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void StartMission(int index)
+    public async Task StartMission(int index)
     {
         if (missions == null || missions.Length == 0)
         {
@@ -44,7 +45,9 @@ public class MissionsMenu : MonoBehaviour
         }
 
         CurrentIndex = index;
-        Debug.Log(CurrentIndex);
+        Debug.Log("Setting async...");
+        await SceneReturn.SetAsync("AttackerSchene", CurrentIndex);
+        Debug.Log("Set!");
 
         if (CurrentMission.showPreface)
         {
@@ -56,6 +59,11 @@ public class MissionsMenu : MonoBehaviour
         }
     }
 
+    public async Task StartMissionAfterPreface()
+    {
+        SceneManager.LoadScene("AttackerSchene");
+    }
+
     public void Reset()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -65,7 +73,7 @@ public class MissionsMenu : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
-    public void LoadNextMissionOrBackToMenu()
+    public async Task LoadNextMissionOrBackToMenu()
     {
         if (missions == null || missions.Length == 0)
         {
@@ -77,10 +85,12 @@ public class MissionsMenu : MonoBehaviour
 
         if (nextIndex < missions.Length)
         {
-            StartMission(nextIndex);
+            await StartMission(nextIndex);
         }
         else
         {
+            await SceneReturn.SetAsync("AttackerSchene", 0);
+
             Debug.Log("No more missions, going back to main menu.");
             SceneManager.LoadScene("End");
         }

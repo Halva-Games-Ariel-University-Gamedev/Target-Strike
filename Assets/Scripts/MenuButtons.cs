@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class MenuButtons : MonoBehaviour
@@ -21,13 +23,34 @@ public class MenuButtons : MonoBehaviour
 
     public void OnClick()
     {
-        if (MissionsMenu.Instance != null)
+        _OnClick();
+    }
+
+    private async void _OnClick()
+    {
+        try
         {
-            MissionsMenu.Instance.StartMission(missionIndex);
+            Debug.Log("Start Clicked");
+
+            if (MissionsMenu.Instance == null)
+            {
+                Debug.LogWarning("MissionsMenu.Instance is null");
+                return;
+            }
+
+            Debug.Log("Before PeekAsync");
+            var data = await SceneReturn.PeekAsync();
+            Debug.Log($"After PeekAsync: found={data.found} scene={data.sceneName} index={data.missionIndex}");
+
+            Debug.Log("Before StartMission");
+
+            await MissionsMenu.Instance.StartMission(data.missionIndex >= 0 ? data.missionIndex : 0);
+
+            Debug.Log("After StartMission call");
         }
-        else
+        catch (Exception e)
         {
-            Debug.LogWarning("MissionsMenu.Instance is null – did the singleton get created?");
+            Debug.LogException(e);
         }
     }
 }
