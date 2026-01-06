@@ -1,6 +1,7 @@
 <div dir='rtl' lang='he'>
 
 # Target-Strike
+![image](https://github.com/user-attachments/assets/9134cb13-e2dc-48e8-85c8-33b1bd09e4e4)
 
 Itch.io : https://daniel-work-gh.itch.io/target-strike-v1
 
