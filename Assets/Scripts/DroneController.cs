@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -111,14 +112,29 @@ public class DroneController : MonoBehaviour
         Debug.Log("FIRING on building id: " + target.id);
 
         var mission = MissionsMenu.Instance.CurrentMission;
+        Debug.Log("About to play explosion");
+        AudioManager.Instance.Play("explosion");
+        Debug.Log("After play call");
 
         if (target.gridX == mission.target.x && target.gridZ == mission.target.z)
         {
-            MissionsMenu.Instance.LoadNextMissionOrBackToMenu();
+            IEnumerator LoadNextAfterRealtime(float delay)
+            {
+                yield return new WaitForSecondsRealtime(delay);
+                MissionsMenu.Instance.LoadNextMissionOrBackToMenu();
+            }
+
+            StartCoroutine(LoadNextAfterRealtime(1));
         }
         else
         {
-            MissionsMenu.Instance.Reset();
+            IEnumerator LoadNextAfterRealtime(float delay)
+            {
+                yield return new WaitForSecondsRealtime(delay);
+                MissionsMenu.Instance.ToLoseScreen();
+            }
+
+            StartCoroutine(LoadNextAfterRealtime(1));
         }
 
         // TODO:

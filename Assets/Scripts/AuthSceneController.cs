@@ -34,9 +34,6 @@ public class AuthSceneController : MonoBehaviour
     [SerializeField] Button backButton;
     [SerializeField] TMP_Text accountStatus;
 
-    [Header("Next Scene")]
-    [SerializeField] string nextSceneName = "MainMenu";
-
     AccountMode mode = AccountMode.SignIn;
     bool busy;
 
@@ -128,7 +125,7 @@ public class AuthSceneController : MonoBehaviour
         if (submitButton)
         {
             var label = submitButton.GetComponentInChildren<TMP_Text>(true);
-            if (label) label.text = isSignUp ? "Create account" : "Sign in";
+            if (label) label.text = isSignUp ? "CREATE" : "ENTER";
         }
 
         // Optional “selected” feel: disable the active mode button
@@ -166,6 +163,8 @@ public class AuthSceneController : MonoBehaviour
         {
             if (!AuthenticationService.Instance.IsSignedIn)
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+
 
             LoadNextScene();
         }
@@ -249,11 +248,44 @@ public class AuthSceneController : MonoBehaviour
         }
     }
 
+    public void OnStartClick()
+    {
+        _OnStartClick();
+    }
+
+    private async void _OnStartClick()
+    {
+        try
+        {
+            Debug.Log("Start Clicked");
+
+            if (MissionsMenu.Instance == null)
+            {
+                Debug.LogWarning("MissionsMenu.Instance is null");
+                return;
+            }
+
+            Debug.Log("Before PeekAsync");
+            var data = await SceneReturn.PeekAsync();
+            Debug.Log($"After PeekAsync: found={data.found} scene={data.sceneName} index={data.missionIndex}");
+
+            Debug.Log("Before StartMission");
+
+            await MissionsMenu.Instance.StartMission(data.missionIndex >= 0 ? data.missionIndex : 0);
+
+            Debug.Log("After StartMission call");
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
+    }
+
     // ---------- Helpers ----------
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        _OnStartClick();
     }
 
     static string ShortErr(Exception e)

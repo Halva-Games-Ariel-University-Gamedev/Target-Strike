@@ -30,7 +30,7 @@ public class MissionsMenu : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public async Task StartMission(int index)
+    public async Task StartMission(int index, bool skipPreface = false)
     {
         if (missions == null || missions.Length == 0)
         {
@@ -49,7 +49,7 @@ public class MissionsMenu : MonoBehaviour
         await SceneReturn.SetAsync("AttackerSchene", CurrentIndex);
         Debug.Log("Set!");
 
-        if (CurrentMission.showPreface)
+        if (CurrentMission.showPreface && !skipPreface)
         {
             SceneManager.LoadScene("Preface");
         }
@@ -71,6 +71,15 @@ public class MissionsMenu : MonoBehaviour
         Time.timeScale = 1f;
         CurrentIndex = 0;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void ToLoseScreen()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 1f;
+        CurrentIndex = 0;
+        SceneManager.LoadScene("Lose");
     }
 
     public async Task LoadNextMissionOrBackToMenu()

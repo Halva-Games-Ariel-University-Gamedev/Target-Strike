@@ -50,10 +50,10 @@ public class TutorialScene : MonoBehaviour
     }
 
     bool EnterDown() =>
-        Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
+        Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space);
 
     bool EnterHeld() =>
-        Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter);
+        Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter)|| Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
 
     IEnumerator ShowPage(string fullText)
     {

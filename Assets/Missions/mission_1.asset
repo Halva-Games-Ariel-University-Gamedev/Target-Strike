@@ -26,8 +26,8 @@ MonoBehaviour:
     x: 3
     z: 4
     overrideSize: 1
-    widthX: 15
-    depthZ: 15
+    widthX: 13
+    depthZ: 13
     height: 10
   hints:
   - text: They are about to fire from the smallest building.

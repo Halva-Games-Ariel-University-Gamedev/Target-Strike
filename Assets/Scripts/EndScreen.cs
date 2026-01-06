@@ -1,32 +1,29 @@
 using System;
-using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class MenuButtons : MonoBehaviour
+public class EndScreen : MonoBehaviour
 {
-    public int missionIndex = 0;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    void Awake()
+    bool activated = false;
+
+    void Start()
     {
-        Debug.Log("awaked");
 
-        // Force the cursor to be usable in the menu
-        if (Cursor.lockState != CursorLockMode.None)
-            Cursor.lockState = CursorLockMode.None;
-
-        if (!Cursor.visible)
-            Cursor.visible = true;
-
-        if (Time.timeScale != 1f)
-            Time.timeScale = 1f;
     }
 
-    public void OnClick()
+    // Update is called once per frame
+    void Update()
     {
-        _OnClick();
+        if (Input.GetMouseButtonDown(0) && !activated) // 0 = left click
+        {
+            activated = true;
+            _OnStartClick();
+        }
     }
 
-    private async void _OnClick()
+    private async void _OnStartClick()
     {
         try
         {
@@ -44,7 +41,7 @@ public class MenuButtons : MonoBehaviour
 
             Debug.Log("Before StartMission");
 
-            await MissionsMenu.Instance.StartMission(data.missionIndex >= 0 ? data.missionIndex : 0);
+            await MissionsMenu.Instance.StartMission(data.missionIndex >= 0 ? data.missionIndex : 0, true);
 
             Debug.Log("After StartMission call");
         }
@@ -53,4 +50,5 @@ public class MenuButtons : MonoBehaviour
             Debug.LogException(e);
         }
     }
+
 }
