@@ -15,8 +15,9 @@ public static class Auth
     public static async Task<bool> TryAutoSignInAsync()
     {
         if (!AuthenticationService.Instance.SessionTokenExists) return false;
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
-        return true;
+        //await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        //return true;
+        return false;
     }
 
     public static Task SignUpAsync(string username, string password) =>
