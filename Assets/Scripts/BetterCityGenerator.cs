@@ -48,10 +48,10 @@ public class BetterCityGenerator : MonoBehaviour
             betterWorldGen = mission.worldGen == WorldGenType.BETTER;
         }
 
-        if(betterWorldGen) Generate(seed,mission);
+        if (betterWorldGen) Generate(seed, mission);
         else BasicGenerate(seed, mission);
 
-        if(mission != null && mission.spawnCars) GetComponent<ParkedCarSpawner>().SpawnParkedCars(seed);
+        if (mission != null && mission.spawnCars) GetComponent<ParkedCarSpawner>().SpawnParkedCars(seed);
     }
 
     void BasicGenerate(int seed, MissionConfig mission)
@@ -172,7 +172,7 @@ public class BetterCityGenerator : MonoBehaviour
 
 
     const float BaseSmallChance = 0.20f;
-    
+
     const float NeighborBonus = 0.20f;
 
     public void Generate(int newSeed, MissionConfig mission = null)
@@ -241,7 +241,7 @@ public class BetterCityGenerator : MonoBehaviour
                     ? mission.target.height
                     : Random.Range(heightRange.x, heightRange.y);
 
-                if(isSmall[gx, gz]) height = Random.Range(1, 3) * 5;
+                if (isSmall[gx, gz]) height = Random.Range(1, 3) * 5;
 
                 float fw = Mathf.Max(0.01f, mission != null ? mission.floorWidth : 1f);
                 float fh = Mathf.Max(0.01f, mission != null ? mission.floorHeight : 1f);

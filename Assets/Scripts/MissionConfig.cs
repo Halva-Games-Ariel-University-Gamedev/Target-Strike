@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WorldGenType {
+public enum WorldGenType
+{
     BASIC,
     BETTER
 }

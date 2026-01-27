@@ -201,8 +201,8 @@ public class DroneController : MonoBehaviour
         var bc = _currentHovered?.GetComponent<BoxCollider>() ?? null;
 
         string txt = "";
-        
-        if(bc != null)
+
+        if (bc != null)
         {
             txt = @$"BUILDING ({_currentHovered?.id}) DATA -
                 HEIGHT - {bc?.size.y}M
@@ -210,7 +210,7 @@ public class DroneController : MonoBehaviour
         }
         else
         {
-            if(_currentCarHovered != null)
+            if (_currentCarHovered != null)
             {
                 txt = @$"CAR ({_currentCarHovered?.id}) DATA -
                     LINCESE PLATE - {_currentCarHovered.lincensePlate}

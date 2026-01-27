@@ -28,7 +28,7 @@ public class TargetDescriptor
     public int z;
 
     [Tooltip("ONLY FOR CARS")]
-    public int id = -1; 
+    public int id = -1;
 
     [Header("Size Override")]
     [Tooltip("If false, target uses the normal random building size.")]
