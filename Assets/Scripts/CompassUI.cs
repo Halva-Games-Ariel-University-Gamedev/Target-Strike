@@ -16,7 +16,7 @@ public class CompassTape : MonoBehaviour
     public float degreesPerTick = 15f;     // 15° per tick
 
     [Tooltip("Horizontal spacing (in pixels) between neighboring ticks.")]
-    public float pixelsBetweenTicks = 20f; // distance between ticks in UI
+    public float pixelsBetweenTicks = 120f; // distance between ticks in UI
 
     [Header("Tick Style")]
     public float minorHeight = 10f;
@@ -72,6 +72,8 @@ public class CompassTape : MonoBehaviour
             _ticks.Add(tick);
         }
 
+        _ticks.Reverse();
+
         RecalculateSpacing();
     }
 
@@ -104,7 +106,7 @@ public class CompassTape : MonoBehaviour
         float heading = Mathf.Repeat(target.eulerAngles.y, 360f);
 
         // how many ticks per 45° (for N/E/S/W and 45° labels)
-        int stepsPer45 = Mathf.Max(1, Mathf.RoundToInt(45f / degreesPerTick));
+        int stepsPer10 = Mathf.Max(1, Mathf.RoundToInt(10f / degreesPerTick));
 
         foreach (var tick in _ticks)
         {
@@ -123,12 +125,12 @@ public class CompassTape : MonoBehaviour
                 tick.rect.gameObject.SetActive(true);
 
             // position in UI
-            float x = -diff * _pixelsPerDegree;
+            float x = diff * _pixelsPerDegree;
             tick.rect.anchoredPosition = new Vector2(x, heightOffset);
 
             // major tick every 45°
             int tickIndex = Mathf.RoundToInt(tick.angle / degreesPerTick);
-            bool isMajor = (tickIndex % stepsPer45 == 0);
+            bool isMajor = (tickIndex % stepsPer10 == 0);
 
             // height
             float h = isMajor ? majorHeight : minorHeight;
@@ -142,17 +144,17 @@ public class CompassTape : MonoBehaviour
                     int angleInt = Mathf.RoundToInt(tick.angle) % 360;
                     if (angleInt < 0) angleInt += 360;
 
-                    string txt;
                     switch (angleInt)
                     {
-                        case 0: txt = "N"; break;
-                        case 90: txt = "E"; break;
-                        case 180: txt = "S"; break;
-                        case 270: txt = "W"; break;
-                        default: txt = angleInt.ToString(); break; // 45, 135, 225, 315
+                        case 0: tick.label.text = "N"; break;
+                        case 90: tick.label.text = "E"; break;
+                        case 180: tick.label.text = "S"; break;
+                        case 270: tick.label.text = "W"; break;
+                        default:
+                            tick.label.text = angleInt.ToString();
+                            break;
                     }
 
-                    tick.label.text = txt;
                     tick.label.enabled = true;
                 }
                 else

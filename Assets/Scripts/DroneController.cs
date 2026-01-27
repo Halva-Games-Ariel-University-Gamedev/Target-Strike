@@ -1,9 +1,16 @@
+using System;
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DroneController : MonoBehaviour
 {
+    [Header("Life")]
+    public double battery = 100;
+
     [Header("Movement")]
     public float moveSpeed = 30f;
     public float boostMultiplier = 2f;
@@ -44,6 +51,7 @@ public class DroneController : MonoBehaviour
 
     [Header("UI")]
     public ConfirmFireDialog confirmDialog;
+    public TextMeshProUGUI dataHits;
 
     private bool _inputEnabled = true;
 
@@ -76,11 +84,12 @@ public class DroneController : MonoBehaviour
         if (!_inputEnabled)
             return;  // don't move / look around
 
-
         HandleMouseLook();
         HandleMovement();
         HandleHighlight();
         HandleFireClick();
+        UpdateVisualData();
+        CheckTimer();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -141,6 +150,26 @@ public class DroneController : MonoBehaviour
         // - play explosion
         // - check if target.isTarget
         // - end mission / show success/fail UI, etc.
+    }
+
+    public void UpdateVisualData()
+    {
+        var bc = _currentHovered?.GetComponent<BoxCollider>() ?? null;
+
+        var txt = bc != null ?
+            @$"BUILDING ({_currentHovered?.id}) DATA -
+            HEIGHT - {bc?.size.y}M
+                DIM - {bc?.size.x}M x {bc?.size.z}M" :
+            @$"BUILDING (NULL) DATA -
+            HEIGHT - NULL
+                DIM - NULL x NULL";
+
+        dataHits.SetText($@"
+            DATA
+            DRONE BATTERY - {Math.Round(battery)} %
+            
+            {txt}
+        ".Replace("    ", ""));
     }
 
     void HandleMouseLook()
@@ -244,6 +273,16 @@ public class DroneController : MonoBehaviour
         else
         {
             SetHovered(null);
+        }
+    }
+
+    void CheckTimer()
+    {
+        battery -= 1/1.2 * Time.deltaTime;
+
+        if(battery <= 0)
+        {
+           MissionsMenu.Instance.ToLoseScreen();
         }
     }
 

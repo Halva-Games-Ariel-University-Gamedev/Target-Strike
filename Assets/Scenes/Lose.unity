@@ -181,8 +181,8 @@ MonoBehaviour:
 
     Click to try again.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8d8ee9aecc1f85f4ebe587d54f5ca8dd, type: 2}
+  m_sharedMaterial: {fileID: 4191654138070964459, guid: 8d8ee9aecc1f85f4ebe587d54f5ca8dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
