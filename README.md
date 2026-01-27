@@ -3,7 +3,8 @@
 # Target-Strike
 ![image](https://github.com/user-attachments/assets/9134cb13-e2dc-48e8-85c8-33b1bd09e4e4)
 Target Strike הינו משחק שיתוף פעולה "CO-OP" בו על שני שחקנים מוטלת המשימה של הריסת איתוריי בית בשדה קרב. בזמן ששחקן אחד מתצפת על העיר ו"לוחץ על הכפתור", השחקן השני מקבל ידיעות מודיעין על מאפייני המבנה שצריך להרוס. מצופה מהשחקנים לעבוד בתקשורת בריאה ובשיתוף על מנת להביא להרס המבנים הנכונים, בזמן שהשעון מתקתק בשדה הקרב.
-Itch.io : https://daniel-work-gh.itch.io/target-strike-v1
+
+Itch.io : [Target-Strike](https://guythelevy.itch.io/target-strike)
 
 ## Play test questions
 
