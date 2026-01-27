@@ -57,19 +57,19 @@ public class AuthSceneController : MonoBehaviour
             await InitServicesAsync();
 
             // Auto-restore cached session (works for anon + username/password).
-            if (AuthenticationService.Instance.SessionTokenExists)
-            {
-                try
-                {
-                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                    LoadNextScene();
-                    return;
-                }
-                catch
-                {
-                    // If restoring fails, fall through to manual choice
-                }
-            }
+            // if (AuthenticationService.Instance.SessionTokenExists)
+            // {
+            //     try
+            //     {
+            //         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            //         LoadNextScene();
+            //         return;
+            //     }
+            //     catch
+            //     {
+            //         // If restoring fails, fall through to manual choice
+            //     }
+            // }
 
             ShowWelcome("Choose how you want to play.");
         }
