@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 448616245995993202}
   - component: {fileID: 6399153385750272288}
   - component: {fileID: 7810159448124255157}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: OutlineMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +103,8 @@ GameObject:
   - component: {fileID: 6034974782009095125}
   - component: {fileID: -1705937826605806450}
   - component: {fileID: 7653803048799157343}
-  m_Layer: 3
-  m_Name: Cube
+  m_Layer: 7
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,4 +247,5 @@ MonoBehaviour:
   atlasIndexTopLeft: 1
   windowTiles: 0000000001000000020000000300000004000000050000000600000007000000
   doorTiles: 0c0000000d0000000e0000000f000000
+  roofTiles: 0000000003000000
   floorHeight: 1

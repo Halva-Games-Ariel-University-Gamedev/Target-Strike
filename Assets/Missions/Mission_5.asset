@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572cc35a2d33dff409ba91dedcff5c11, type: 3}
+  m_Name: Mission_5
+  m_EditorClassIdentifier: Assembly-CSharp::MissionConfig
+  missionName: 
+  buildingsX: 20
+  buildingsZ: 20
+  spacing: 18
+  sizeXRange: {x: 10, y: 15}
+  sizeZRange: {x: 10, y: 15}
+  heightRange: {x: 10, y: 30}
+  floorHeight: 5
+  floorWidth: 5
+  seed: 121212
+  targerIsCar: 1
+  target:
+    x: 0
+    z: 0
+    id: 19
+    overrideSize: 0
+    widthX: 1
+    depthZ: 1
+    height: 1
+  worldGen: 1
+  spawnCars: 1
+  hints:
+  - text: 1. The target car is light colored.
+  - text: 2. The license plate begins with 3 letters.
+  - text: 3. The car is in the northen side on the city.
+  showPreface: 1
+  prefaceTitle: 
+  msgs:
+  - text: This is your last mission soldier, good luck!
+  prefaceImage: {fileID: 2800000, guid: 456aa444eb73bd24bb6fcec0faf0e8d7, type: 3}

@@ -28,7 +28,7 @@ public static class Auth
 
     // Use this to KEEP the same player (and their Cloud Save) and “upgrade” anon -> username/password.
     public static Task LinkToUsernamePasswordAsync(string username, string password) => null;
-        //.Instance.AddUsernamePasswordAsync(username, password);
+    //.Instance.AddUsernamePasswordAsync(username, password);
 
     public static void SignOutAndForgetDeviceToken()
     {

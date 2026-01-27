@@ -1,6 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WorldGenType {
+    BASIC,
+    BETTER
+}
+
 [CreateAssetMenu(fileName = "NewMission", menuName = "TargetStrike/Mission")]
 public class MissionConfig : ScriptableObject
 {
@@ -19,7 +24,12 @@ public class MissionConfig : ScriptableObject
     public int seed = 12345; // so the city is deterministic
 
     [Header("Target")]
+    public bool targerIsCar = false;
     public TargetDescriptor target;
+
+    [Header("World")]
+    public WorldGenType worldGen = WorldGenType.BASIC;
+    public bool spawnCars = false;
 
     [Header("Hints")]
     public List<TargetHint> hints = new();

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You picked the wrong target and lost.
+  m_text: 'You failed to select the currect target and lost.
 
 
     Click to try again.'

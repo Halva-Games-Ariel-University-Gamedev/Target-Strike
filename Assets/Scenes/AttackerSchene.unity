@@ -159,17 +159,20 @@ MonoBehaviour:
   maxRoll: 8
   maxPitchSway: 4
   swayLerpSpeed: 5
-  minX: -100
-  maxX: 100
-  minZ: -100
-  maxZ: 100
+  minX: -150
+  maxX: 150
+  minZ: -150
+  maxZ: 150
   mouseSensitivity: 2
   minPitch: -80
   maxPitch: 80
   maxSelectDistance: 1000
   buildingMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
+  carMask:
+    serializedVersion: 2
+    m_Bits: 64
   confirmDialog: {fileID: 244586769}
   dataHits: {fileID: 482890436}
 --- !u!4 &6096132
@@ -993,7 +996,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1071,7 +1074,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 255
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1360,6 +1363,8 @@ GameObject:
   m_Component:
   - component: {fileID: 470083433}
   - component: {fileID: 470083432}
+  - component: {fileID: 470083434}
+  - component: {fileID: 470083435}
   m_Layer: 0
   m_Name: CityBuilder
   m_TagString: Untagged
@@ -1374,7 +1379,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470083431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1c2d819a75357642b20d79865443cf0, type: 3}
   m_Name: 
@@ -1404,6 +1409,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470083434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470083431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 920cb88ed3d98474a933d2b6b04ee146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BetterCityGenerator
+  buildingPrefab: {fileID: 7846598482065806715, guid: a47c144850870234086f6744a0c42cd6, type: 3}
+  smallBuildingPrefab: {fileID: 7846598482065806715, guid: 77e2f5469b887894d8ef9be425b212e3, type: 3}
+  randomSeedOnPlay: 1
+  seed: 12345
+  buildingsX: 5
+  buildingsZ: 2
+  spacing: 15
+  sizeXRange: {x: 6, y: 12}
+  sizeZRange: {x: 6, y: 12}
+  heightRange: {x: 15, y: 40}
+  missionHintBox: {fileID: 2054913610}
+--- !u!114 &470083435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470083431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a951b8a39e5f49419b5e4260350ad7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarInfo
+  carPrefab: {fileID: 4980075402324185219, guid: 1b43d549d53ccf946a10756625bc781d, type: 3}
+  overrideCarMaterial: {fileID: 2100000, guid: 498b9503dffeb65459cb746055cecd4e, type: 2}
+  carsToSpawn: 20
+  maxAttemptsPerCar: 120
+  groundY: 0
+  buildingClearance: 2
+  carClearance: 2
+  boundsMin: {fileID: 0}
+  boundsMax: {fileID: 0}
 --- !u!1 &482890434
 GameObject:
   m_ObjectHideFlags: 0

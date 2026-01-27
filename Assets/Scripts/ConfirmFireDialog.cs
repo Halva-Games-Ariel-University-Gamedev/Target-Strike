@@ -12,6 +12,7 @@ public class ConfirmFireDialog : MonoBehaviour
     public DroneController drone;   // drag your DroneController here
 
     private BuildingInfo _currentTarget;
+    private CarInfo _currentCarTarget;
 
     void Awake()
     {
@@ -28,7 +29,20 @@ public class ConfirmFireDialog : MonoBehaviour
     // called from DroneController when a building is clicked
     public void Show(BuildingInfo target)
     {
+        _currentCarTarget = null;
+        _currentTarget = null;
         _currentTarget = target;
+        gameObject.SetActive(true);
+
+        if (drone != null)
+            drone.SetInputEnabled(false);  // stop drone movement + unlock cursor
+    }
+
+    public void Show(CarInfo target)
+    {
+        _currentCarTarget = null;
+        _currentTarget = null;
+        _currentCarTarget = target;
         gameObject.SetActive(true);
 
         if (drone != null)
@@ -38,6 +52,7 @@ public class ConfirmFireDialog : MonoBehaviour
     void Close()
     {
         gameObject.SetActive(false);
+        _currentCarTarget = null;
         _currentTarget = null;
 
         if (drone != null)
@@ -49,6 +64,10 @@ public class ConfirmFireDialog : MonoBehaviour
         if (drone != null && _currentTarget != null)
         {
             drone.ConfirmFire(_currentTarget);
+        }
+        else if (drone != null && _currentCarTarget != null)
+        {
+            drone.ConfirmFire(_currentCarTarget);
         }
         Close();
     }

@@ -49,9 +49,15 @@ public class DroneController : MonoBehaviour
     public float maxSelectDistance = 1000f;
     public LayerMask buildingMask; // set to "Building" layer in Inspector
 
+    [Header("Car Highlight")]
+    public LayerMask carMask; // set to "Car" layer in Inspector
+    private CarInfo _currentCarHovered;
+
     [Header("UI")]
     public ConfirmFireDialog confirmDialog;
     public TextMeshProUGUI dataHits;
+
+
 
     private bool _inputEnabled = true;
 
@@ -152,17 +158,66 @@ public class DroneController : MonoBehaviour
         // - end mission / show success/fail UI, etc.
     }
 
+    public void ConfirmFire(CarInfo target)
+    {
+        if (target == null) return;
+
+        Debug.Log("FIRING on building id: " + target.id);
+
+        var mission = MissionsMenu.Instance.CurrentMission;
+        Debug.Log("About to play explosion");
+        AudioManager.Instance.Play("explosion");
+        Debug.Log("After play call");
+
+        if (target.id == mission.target.id)
+        {
+            IEnumerator LoadNextAfterRealtime(float delay)
+            {
+                yield return new WaitForSecondsRealtime(delay);
+                MissionsMenu.Instance.LoadNextMissionOrBackToMenu();
+            }
+
+            StartCoroutine(LoadNextAfterRealtime(1));
+        }
+        else
+        {
+            IEnumerator LoadNextAfterRealtime(float delay)
+            {
+                yield return new WaitForSecondsRealtime(delay);
+                MissionsMenu.Instance.ToLoseScreen();
+            }
+
+            StartCoroutine(LoadNextAfterRealtime(1));
+        }
+
+        // TODO:
+        // - play explosion
+        // - check if target.isTarget
+        // - end mission / show success/fail UI, etc.
+    }
+
     public void UpdateVisualData()
     {
         var bc = _currentHovered?.GetComponent<BoxCollider>() ?? null;
 
-        var txt = bc != null ?
-            @$"BUILDING ({_currentHovered?.id}) DATA -
-            HEIGHT - {bc?.size.y}M
-                DIM - {bc?.size.x}M x {bc?.size.z}M" :
-            @$"BUILDING (NULL) DATA -
-            HEIGHT - NULL
-                DIM - NULL x NULL";
+        string txt = "";
+        
+        if(bc != null)
+        {
+            txt = @$"BUILDING ({_currentHovered?.id}) DATA -
+                HEIGHT - {bc?.size.y}M
+                DIM - {bc?.size.x}M x {bc?.size.z}M";
+        }
+        else
+        {
+            if(_currentCarHovered != null)
+            {
+                txt = @$"CAR ({_currentCarHovered?.id}) DATA -
+                    LINCESE PLATE - {_currentCarHovered.lincensePlate}
+                    COLOR - {_currentCarHovered.carColor}";
+            }
+            else txt = "NULL - NO DATA";
+        }
 
         dataHits.SetText($@"
             DATA
@@ -205,6 +260,11 @@ public class DroneController : MonoBehaviour
         // left mouse click
         if (Input.GetMouseButtonDown(0))
         {
+            if (_currentCarHovered != null && confirmDialog != null)
+            {
+                confirmDialog.Show(_currentCarHovered);
+            }
+
             // only if we're actually looking at a building
             if (_currentHovered != null && confirmDialog != null)
             {
@@ -261,28 +321,60 @@ public class DroneController : MonoBehaviour
     void HandleHighlight()
     {
         Ray ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxSelectDistance, buildingMask))
-        {
-            BuildingInfo info = hit.collider.GetComponentInParent<BuildingInfo>();
 
-            if (info != _currentHovered)
-            {
-                SetHovered(info);
-            }
-        }
-        else
+        // Try hit car first (or building first, your choice)
+        if (Physics.Raycast(ray, out RaycastHit hitCar, maxSelectDistance, carMask))
         {
+            CarInfo car = hitCar.collider.GetComponentInParent<CarInfo>();
+
+            if (car != _currentCarHovered)
+            {
+                SetHoveredCar(car);
+            }
+
+            // If we are on a car, clear building hover
             SetHovered(null);
+            return;
         }
+
+        // Then buildings
+        if (Physics.Raycast(ray, out RaycastHit hitB, maxSelectDistance, buildingMask))
+        {
+            BuildingInfo info = hitB.collider.GetComponentInParent<BuildingInfo>();
+            if (info != _currentHovered)
+                SetHovered(info);
+
+            // Clear car hover
+            SetHoveredCar(null);
+            return;
+        }
+
+        // Nothing hit
+        SetHovered(null);
+        SetHoveredCar(null);
     }
+
+    void SetHoveredCar(CarInfo newHovered)
+    {
+        if (_currentCarHovered == newHovered) return;
+
+        if (_currentCarHovered != null)
+            _currentCarHovered.SetHighlighted(false);
+
+        _currentCarHovered = newHovered;
+
+        if (_currentCarHovered != null)
+            _currentCarHovered.SetHighlighted(true);
+    }
+
 
     void CheckTimer()
     {
-        battery -= 1/1.2 * Time.deltaTime;
+        battery -= 1 / 1.2 * Time.deltaTime;
 
-        if(battery <= 0)
+        if (battery <= 0)
         {
-           MissionsMenu.Instance.ToLoseScreen();
+            MissionsMenu.Instance.ToLoseScreen();
         }
     }
 
